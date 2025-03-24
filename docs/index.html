@@ -3,234 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activity Risk Assessment System (ARAS)</title>
+    <title>CO Activity Risk Assessment System (CORAS)</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h1>Activity Risk Assessment System (ARAS)</h1>
-                <p class="date" id="current-date">Monday, March 24</p>
+    <div class="container" id="assessment-container">
+        <h1>CO Activity Risk Assessment System (CORAS)</h1>
+        <p class="date" id="current-date"></p>
+        
+        <div class="tool-header">
+            <h2>Risk Assessment Tool</h2>
+            <p>Complete the form to evaluate outdoor activity risks</p>
+        </div>
+        
+        <form id="assessment-form">
+            <div class="form-section">
+                <h3 class="center-heading">User Details</h3>
+                
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" min="18" max="100" value="30" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="height">Height (inches):</label>
+                    <input type="number" id="height" name="height" min="48" max="96" value="68" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="weight">Weight (pounds):</label>
+                    <input type="number" id="weight" name="weight" min="70" max="400" value="150" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="weight-carried">Additional Weight Carried (pounds):</label>
+                    <input type="number" id="weight-carried" name="weight-carried" min="0" max="100" value="10" required>
+                </div>
             </div>
             
-            <div class="status-box">
-                <h2>Risk Assessment Tool</h2>
-                <p>Complete the form to evaluate outdoor activity risks</p>
+            <div class="form-section">
+                <h3 class="center-heading">Location Details</h3>
+                
+                <div class="form-group">
+                    <label for="location">Location:</label>
+                    <select id="location" name="location" required>
+                        <option value="garden-of-the-gods">Garden of the Gods</option>
+                        <option value="pikes-peak">Pikes Peak</option>
+                        <option value="barr-trail">Barr Trail</option>
+                        <option value="manitou-incline">Manitou Incline</option>
+                        <option value="cheyenne-canyon">Cheyenne Canyon</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="search-radius">Search Radius (miles):</label>
+                    <input type="number" id="search-radius" name="search-radius" min="0.1" max="10" step="0.1" value="1.0" required>
+                </div>
             </div>
             
-            <form id="assessment-form">
-                <div class="form-section">
-                    <h3>User Attributes</h3>
-                    
-                    <div class="form-group">
-                        <label for="age">Age:</label>
-                        <input type="number" id="age" name="age" min="18" max="100" value="30" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="gender">Gender:</label>
-                        <select id="gender" name="gender" required>
-                            <option value="" disabled selected>Select gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="height">Height (inches):</label>
-                        <input type="number" id="height" name="height" min="48" max="96" value="68" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="weight">Weight (pounds):</label>
-                        <input type="number" id="weight" name="weight" min="70" max="400" value="150" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="weight-carried">Additional Weight Carried (pounds):</label>
-                        <input type="number" id="weight-carried" name="weight-carried" min="0" max="100" value="10" required>
-                    </div>
+            <div class="form-section">
+                <h3 class="center-heading">Activity Details</h3>
+                
+                <div class="form-group">
+                    <label for="activity-type">Activity Type:</label>
+                    <select id="activity-type" name="activity-type" required>
+                        <option value="hiking">Hiking</option>
+                        <option value="rock-climbing">Rock Climbing</option>
+                        <option value="mountain-biking">Mountain Biking</option>
+                        <option value="backcountry-skiing">Backcountry Skiing</option>
+                        <option value="kayaking">Kayaking</option>
+                        <option value="trail-running">Trail Running</option>
+                    </select>
                 </div>
                 
-                <div class="form-section">
-                    <h3>Location Details</h3>
-                    
-                    <div class="form-group">
-                        <label for="location">Location:</label>
-                        <select id="location" name="location" required>
-                            <option value="" disabled selected>Select location</option>
-                            <option value="Garden of the Gods">Garden of the Gods</option>
-                            <option value="Pikes Peak">Pikes Peak</option>
-                            <option value="Cheyenne Mountain">Cheyenne Mountain</option>
-                            <option value="Palmer Park">Palmer Park</option>
-                            <option value="Manitou Incline">Manitou Incline</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="radius">Search Radius (miles):</label>
-                        <input type="number" id="radius" name="radius" min="0.1" max="10" step="0.1" value="1.0" required>
-                    </div>
+                <div class="form-group">
+                    <label for="experience-level">Experience Level:</label>
+                    <select id="experience-level" name="experience-level" required>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                        <option value="expert">Expert</option>
+                    </select>
                 </div>
                 
-                <div class="form-section">
-                    <h3>Activity Details</h3>
-                    
-                    <div class="form-group">
-                        <label for="activity-type">Activity Type:</label>
-                        <select id="activity-type" name="activity-type" required>
-                            <option value="" disabled selected>Select activity</option>
-                            <option value="hiking">Hiking</option>
-                            <option value="rock_climbing">Rock Climbing</option>
-                            <option value="mountain_biking">Mountain Biking</option>
-                            <option value="backcountry_skiing">Backcountry Skiing</option>
-                            <option value="kayaking">Kayaking</option>
-                            <option value="trail_running">Trail Running</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="experience">Experience Level:</label>
-                        <select id="experience" name="experience" required>
-                            <option value="" disabled selected>Select level</option>
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="advanced">Advanced</option>
-                            <option value="expert">Expert</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="group-size">Group Size:</label>
-                        <input type="number" id="group-size" name="group-size" min="1" max="20" value="1" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="equipment-quality">Equipment Quality:</label>
-                        <select id="equipment-quality" name="equipment-quality" required>
-                            <option value="" disabled selected>Select quality</option>
-                            <option value="poor">Poor</option>
-                            <option value="basic">Basic</option>
-                            <option value="good">Good</option>
-                            <option value="excellent">Excellent</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label for="group-size">Group Size:</label>
+                    <input type="number" id="group-size" name="group-size" min="1" max="20" value="2" required>
                 </div>
                 
-                <div class="form-section">
-                    <h3>Weather Details</h3>
-                    <div class="form-group">
-                        <label>
-                            <input type="checkbox" id="use-realtime-weather" name="use-realtime-weather" checked>
-                            Use real-time weather data
-                        </label>
-                    </div>
-                    
-                    <div id="manual-weather-inputs" style="display: none;">
-                        <div class="form-group">
-                            <label for="temperature">Temperature (°F):</label>
-                            <input type="number" id="temperature" name="temperature" step="0.1" value="68">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="precipitation">Precipitation (inches):</label>
-                            <input type="number" id="precipitation" name="precipitation" min="0" step="0.1" value="0">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="wind-speed">Wind Speed (mph):</label>
-                            <input type="number" id="wind-speed" name="wind-speed" min="0" step="0.1" value="0">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="thunderstorm-risk">Thunderstorm Risk (0-10):</label>
-                            <input type="number" id="thunderstorm-risk" name="thunderstorm-risk" min="0" max="10" step="0.1" value="0">
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="equipment-quality">Equipment Quality:</label>
+                    <select id="equipment-quality" name="equipment-quality" required>
+                        <option value="basic">Basic</option>
+                        <option value="standard">Standard</option>
+                        <option value="professional">Professional</option>
+                    </select>
                 </div>
-                
-                <div class="metrics-container">
-                    <div class="metric-box">
-                        <i class="fas fa-hiking"></i>
-                        <h3>Activity</h3>
-                        <p id="activity-display">-</p>
-                    </div>
-                    
-                    <div class="metric-box">
-                        <i class="fas fa-mountain"></i>
-                        <h3>Terrain</h3>
-                        <p id="terrain-display">-</p>
-                    </div>
-                    
-                    <div class="metric-box">
-                        <i class="fas fa-cloud-sun-rain"></i>
-                        <h3>Weather</h3>
-                        <p id="weather-display">-</p>
-                    </div>
-                </div>
-                
-                <button type="submit" class="submit-btn">Calculate Risk</button>
-            </form>
+            </div>
             
-            <div id="results" class="results-container" style="display: none;">
+            <div class="form-section">
+                <h3 class="center-heading">Weather Details</h3>
+                
+                <div class="form-group">
+                    <label for="use-real-weather">Use Real-time Weather Data:</label>
+                    <input type="checkbox" id="use-real-weather" name="use-real-weather" checked>
+                </div>
+            </div>
+            
+            <button type="button" id="calculate-risk" class="btn">Calculate Risk</button>
+        </form>
+        
+        <div id="results" style="display: none;">
+            <div class="results-header">
                 <h2>Risk Assessment Report</h2>
-                
-                <div class="risk-level-badge" id="risk-level-badge">
-                    <span class="risk-level-text">Moderate</span>
-                </div>
-                
-                <div class="risk-meter">
-                    <div class="risk-indicator" id="risk-indicator"></div>
-                    <div class="risk-labels">
-                        <span>Low</span>
-                        <span>Moderate</span>
-                        <span>High</span>
-                        <span>Extreme</span>
-                    </div>
-                </div>
-                
-                <div class="weather-forecast">
-                    <h3>Weather Forecast</h3>
-                    <div class="forecast-container" id="forecast-container">
-                        <!-- Forecast items will be added here -->
-                    </div>
-                </div>
-                
-                <div class="risk-details">
-                    <h3>Risk Factors</h3>
-                    <div class="scale-legend">
-                        <span>Low - 0</span>
-                        <span>High - 10</span>
-                    </div>
-                    <ul id="risk-factors"></ul>
-                    
-                    <h3>Recommendations</h3>
-                    <ul id="recommendations"></ul>
-                    
-                    <h3>GIS Context</h3>
-                    <ul id="gis-context"></ul>
-                </div>
-                
-                <button id="back-btn" class="back-btn">Back to Form</button>
+                <p class="activity-header" id="activity-location"></p>
             </div>
-        </div>
-    </div>
-
-    <div class="nav-bar">
-        <div class="nav-item active">
-            <i class="fas fa-home"></i>
-            <span>Assessment</span>
-        </div>
-        <div class="nav-item">
-            <i class="fas fa-clock"></i>
-            <span>History</span>
-        </div>
-        <div class="nav-item">
-            <i class="fas fa-user"></i>
-            <span>Profile</span>
+            
+            <div class="risk-meter">
+                <div class="risk-segment low">LOW</div>
+                <div class="risk-segment moderate">MODERATE</div>
+                <div class="risk-segment high">HIGH</div>
+                <div class="risk-segment extreme">EXTREME</div>
+                <div id="risk-indicator"></div>
+            </div>
+            <div id="risk-level" class="risk-level-text">LOW</div>
+            
+            <div class="risk-details">
+                <h3>Risk Factors</h3>
+                <div class="scale-legend">
+                    <span>Low - 0</span>
+                    <span>High - 10</span>
+                </div>
+                <ul id="risk-factors"></ul>
+                
+                <h3>Recommendations</h3>
+                <ul id="recommendations"></ul>
+                
+                <h3>GIS / Location Details</h3>
+                <ul id="gis-context"></ul>
+                
+                <h3>Weather Forecast</h3>
+                <div id="forecast-container" class="forecast-container"></div>
+                
+                <button id="back-btn" class="btn">Back to Form</button>
+                
+                <div class="disclaimer">
+                    <p>Disclaimer: The recommendations provided are based on algorithmic risk assessment and should be used as guidance only. Always use your own judgment, check current conditions, and follow local regulations.</p>
+                </div>
+            </div>
         </div>
     </div>
     
